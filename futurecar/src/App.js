@@ -15,7 +15,7 @@ const Header = styled.div `
 
 const Section = styled.section `
   background-color: #e6e6e6;
-  height: 500px;
+  height: 700px;
   padding-top: 70px;
   margin: 0 auto;
   
@@ -26,13 +26,16 @@ const Hr = styled.hr `
 `;
 
 const Titulo = styled.div `
+  text-align: center;
+
   width: 100%;
-  height: 50px;
+  height: 40px;
   background-color: rgb(255,92,92);
 `;
 
 const Footer= styled.footer `
   display: flex;
+  justify-content: space-between;
   background-color: rgb(255,92,92);
   height: 50px;
   bottom: 0px;
@@ -40,21 +43,33 @@ const Footer= styled.footer `
   padding: 5px;
 `;
 
+const Test= styled.div`
+display:flex;
+`
+
 const ImgFooter= styled.img `
   display:flex;
   width: 40px;
   height: 40px;
+  margin-left: 10px;
 `;
 
-const IconeFooter = styled.div `
+const FooterIcons= styled.div`
+display:flex;
+`
+
+const IconeFooter = styled.img `
+display:flex;
+width: 40px;
+height: 40px;
+margin-right: 5px;
 `;
 
 const DivButton = styled.div `
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 150px;
-  padding: 10px;
+  margin-top: 250px;
 `;
 
 const Button = styled.button `
@@ -70,7 +85,7 @@ function App() {
   return (
     <MainContainer>
       <Header>   
-        <img src={require('./components/img/futurecar.png') }  />
+        <img src={require('./components/img/futurecar.png')}  />
       </Header>
      
       <Section>
@@ -78,7 +93,7 @@ function App() {
         <Hr/>
         
           <Titulo>
-            FutureCAR VRUMM !
+           <h2>FutureCAR VRUMM !</h2> 
           </Titulo>
           <DivButton>
             <Button> Quero Comprar</Button>
@@ -90,9 +105,14 @@ function App() {
       
       <Footer>
     
+      <Test>
         <ImgFooter src={require('./components/img/carro-preto.png')}/> <h4>FUTURECAR | Going beyond.</h4>
-        <IconeFooter></IconeFooter>
-
+      </Test>
+        <FooterIcons>
+          <IconeFooter src={require('./components/img/instagram.png')} />
+          <IconeFooter  src={require('./components/img/facebook.png')} />
+          <IconeFooter src={require('./components/img/email.png')}  />
+        </FooterIcons>
       
       </Footer>
 
