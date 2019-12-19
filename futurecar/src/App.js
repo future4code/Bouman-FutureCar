@@ -15,7 +15,7 @@ const Header = styled.div `
 
 const Section = styled.section `
   background-color: #e6e6e6;
-  height: 700px;
+  height: 100%;
   padding-top: 70px;
   margin: 0 auto;
   
@@ -37,8 +37,6 @@ const Footer= styled.footer `
   justify-content: space-between;
   background-color: rgb(255,92,92);
   height: 50px;
-  bottom: 0px;
-  position: relative;
   padding: 5px;
 `;
 
@@ -68,7 +66,7 @@ const DivButton = styled.div `
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 250px;
+  margin-top: 0px;
 `;
 
 const Button = styled.button `
@@ -77,6 +75,11 @@ const Button = styled.button `
   background-color: #ff5c5c;
   margin-left: 50px;
 `;
+
+const DivTest = styled.div `
+  display: flex;
+`;
+
 
 const carros = [
   {
@@ -166,7 +169,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPage: "" 
+      currentPage: null 
     }
   }
 
@@ -195,7 +198,11 @@ class App extends React.Component {
             <DivButton>
               <Button onClick={this.handleStore}> Quero Comprar</Button>
               <Button onClick={this.handleForm}> Quero Vender</Button>
-              {this.state.currentPage === "store" ? <Store /> : <FormCars />}
+              {this.state.currentPage === "store" ? <FormCars /> : <Store />}
+              <DivTest>
+              {this.currentPage}
+
+              </DivTest>
             </DivButton>
         </Section>
 

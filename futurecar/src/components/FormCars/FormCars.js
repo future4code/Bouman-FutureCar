@@ -1,56 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 
-const MainContainer = styled.div `
-
-`;
-
-
-const Header = styled.div `
-  display:flex;
-  justify-content: center;
-  border: solid 1px;
-`;
-
-const Section = styled.section `
-  background-color: #e6e6e6;
-  height: 500px;
-  padding-top: 70px;
-  margin: 0 auto;
-  
-`;
-
-const Hr = styled.hr `
-  padding-top: 50px;
-`;
-
-const Titulo = styled.div `
-  width: 100%;
-  height: 50px;
-  background-color: rgb(255,92,92);
-`;
-
-const Footer= styled.footer `
-  display: flex;
-  background-color: rgb(255,92,92);
-  height: 50px;
-  bottom: 0px;
-  position: relative;
-  padding: 5px;
-`;
-
-const ImgFooter= styled.img `
-  display:flex;
-  width: 40px;
-  height: 40px;
-`;
-
-const IconeFooter = styled.div `
-`;
-
-const DivButton = styled.div `
+const DivButton1 = styled.div `
   margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+
 `;
 
 const Button = styled.button `
@@ -70,23 +27,51 @@ const Inputs = styled.input `
   box-sizing: border-box;
 `;
 
+const baseUrl = "https://us-central1-future-apis.cloudfunctions.net/futureCar/cars"
+
 class FormCars extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            modelo: '',
+            name: '',
+            description: '',
+            prince: '' ,
+            paymentMethod:'' ,
+            shipping:'' ,
             cor: '',
             ano: '',
             fornecedor: '',
-            preco: '',
             km: '',
             foto: ''
         }
     }
 
-    controleModelo = event =>{
-        this.setState({modelo: event.target.value})
+    CreateCars =  async () =>{
+
+        console.log(data)
+        const data = {
+                name: this.state.name,
+                description: this.state.description,
+                prince: this.state.prince,
+                paymentMethod: this.state.paymentMethod,
+                shipping: this.state.cor,
+                cor: this.state.cor,
+                ano: this.state.ano,
+                fornecedor: this.state.fornecedor,
+                foto: this.state.foto,
+
+        };
+
+        const response = axios.post(baseUrl, data)
+    
+        this.setState({cars: response.data})
+        
+        
+    }
+
+    controleName = event =>{
+        this.setState({name: event.target.value})
     }
 
     controleCor = event =>{
@@ -101,10 +86,6 @@ class FormCars extends React.Component {
         this.setState({fornecedor: event.target.value})
     }
 
-    controlePreco = event =>{
-        this.setState({preco: event.target.value})
-    }
-
     controleKm = event =>{
         this.setState({km: event.target.value})
     }
@@ -113,25 +94,42 @@ class FormCars extends React.Component {
         this.setState({foto: event.target.value})
     }
 
+    controleDescription = event =>{
+        this.setState({description: event.target.value})
+    }
+
+    controlePrince = event =>{
+        this.setState({prince: event.target.value})
+    }
+
+    controlePaymentMethod = event =>{
+        this.setState({paymentMethod: event.target.value})
+    }
+
+    controleShipping = event =>{
+        this.setState({shipping: event.target.value})
+    }
+
     render(){
     
         return(
-        <MainContainer>
-        <Header>   
-          <img src={require('../img/futurecar.png') }  />
-        </Header>
-       
-        <Section>
-  
-          <Hr/>
-          
-            <Titulo>
-              FutureCAR VRUMM !
-            </Titulo>
-            <DivButton>
+        
+            <DivButton1>
             <h2>Preencha o casdastro de veículo</h2>
                 <p>Modelo: </p><Inputs type="text" placeholder="MODELO"
-                value={this.state.modelo} onChange={this.controleModelo}
+                value={this.state.name} onChange={this.controleName}
+                />
+                 <p>Descrição: </p><Inputs type="text" placeholder="MODELO"
+                value={this.state.description} onChange={this.controleDescription}
+                />
+                <p>Preço: </p><Inputs type="number" placeholder="MODELO"
+                value={this.state.prince} onChange={this.controlePrince}
+                />
+                <p>Método de Pagamento: </p><Inputs type="text" placeholder="MODELO"
+                value={this.state.paymentMethod} onChange={this.controlePaymentMethod}
+                />
+                <p>Prazo de Entrega: </p><Inputs type="text" placeholder="MODELO"
+                value={this.state.shipping} onChange={this.controleShipping}
                 />
                 <p>Cor: </p><Inputs type="text" placeholder="COR"
                 value={this.state.cor} onChange={this.controleCor}
@@ -142,33 +140,17 @@ class FormCars extends React.Component {
                 <p>Marca: </p><Inputs type="text" placeholder="FORNECEDOR DO VEÍCULO"
                 value={this.state.fornecedor} onChange={this.controleFornecedor}
                 /> 
-                <p>Preço: </p> <Inputs type="number" placeholder="VALOR DO VEÍCULO"
-                value={this.state.preco} onChange={this.controlePreco}
-                />
                 <p>KM: </p><Inputs type="number" placeholder="QUILOMETRANGEM"
                 value={this.state.km} onChange={this.controleKm}
                 /> 
                 <p>Foto: </p><Inputs type="text" placeholder="URL DA IMAGEM DO VEÍCULO"
                 value={this.state.foto} onChange={this.controleFoto}
                 /> 
-                <button>Enviar</button>
-            </DivButton>
+                <button onClick={this.CreateCars}>Enviar</button>
+            </DivButton1>
   
          
-       </Section>
-  
-  
-        
-          <Footer>
-      
-            <ImgFooter src={require('../img/carro-preto.png')}/> <h4>FUTURECAR | Going beyond.</h4>
-            <IconeFooter></IconeFooter>
-  
-        
-      </Footer>
-  
-  
-    </MainContainer>
+     
         )
     }
 }

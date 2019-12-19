@@ -19,17 +19,9 @@ class Store extends React.Component {
    
     render(){  
         return(
-            this.props.carro.map((car) => {
-                console.log(car)
-                    return (
-                        <DivCards>
-                            <ImaginaCars src={car.foto}/>
-                            <p>Modelo: {car.modelo}</p>
-                            <p>Fabricante: {car.marca}</p>
-                            <p>Ano: {car.ano}</p>
-                        </DivCards>
-                    )
-                })
+            <div>
+                <h1>Oi</h1>
+            </div>
         )
     
     }
