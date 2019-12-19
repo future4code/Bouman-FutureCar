@@ -4,74 +4,119 @@ import Filtro from './components/Filtro'
 
 const MainContainer = styled.div `
 
-`
+`;
 
 const Header = styled.div `
-display:flex;
-justify-content: center;
-border: solid 1px;
-
-`
+  display:flex;
+  justify-content: center;
+  border: solid 1px;
+`;
 
 const Section = styled.section `
-background-color: #e6e6e6;
-height: 500px;
-padding-top: 50px;
+  background-color: #e6e6e6;
+  height: 700px;
+  padding-top: 70px;
+  margin: 0 auto;
+  
+`;
 
-`
 const Hr = styled.hr `
-padding-top: 50px;
-`
+  padding-top: 50px;
+`;
 
 const Titulo = styled.div `
-width: 100%;
-height: 50px;
-background-color: rgb(255,92,92);
+  text-align: center;
 
-`
-const Footer= styled.div `
+  width: 100%;
+  height: 40px;
+  background-color: rgb(255,92,92);
+`;
+
+const Footer= styled.footer `
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(255,92,92);
+  height: 50px;
+  bottom: 0px;
+  position: relative;
+  padding: 5px;
+`;
+
+const Test= styled.div`
 display:flex;
-background-color: rgb(255,92,92);
-height: 50px;
-
 `
+
+const Footer= styled.div `
 
 const ImgFooter= styled.img `
+  display:flex;
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+`;
+
+const FooterIcons= styled.div`
+display:flex;
+`
+
+const IconeFooter = styled.img `
 display:flex;
 width: 40px;
 height: 40px;
+
 `
 const IconeFooter = styled.div `
 `
+
+margin-right: 5px;
+`;
+
+const DivButton = styled.div `
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 250px;
+`;
+
+const Button = styled.button `
+  width: 150px;
+  height: 50px;
+  background-color: #ff5c5c;
+  margin-left: 50px;
+`;
 
 function App() {
   return (
     <MainContainer>
       <Header>   
-        <img src={require('./components/img/futurecar.png') }  />
+        <img src={require('./components/img/futurecar.png')}  />
       </Header>
      
       <Section>
 
-      <Hr/>
-      
-        <Titulo>
-          FutureCAR VRUMM !
-        </Titulo>
-
-        <button/>       <button/>
-
-
-
+        <Hr/>
+        
+          <Titulo>
+           <h2>FutureCAR VRUMM !</h2> 
+          </Titulo>
+          <DivButton>
+            <Button> Quero Comprar</Button>
+            <Button> Quero Vender</Button>
+          </DivButton>
       </Section>
 
 
       
       <Footer>
     
+      <Test>
         <ImgFooter src={require('./components/img/carro-preto.png')}/> <h4>FUTURECAR | Going beyond.</h4>
-        <IconeFooter></IconeFooter>
-
+      </Test>
+        <FooterIcons>
+          <IconeFooter src={require('./components/img/instagram.png')} />
+          <IconeFooter  src={require('./components/img/facebook.png')} />
+          <IconeFooter src={require('./components/img/email.png')}  />
+        </FooterIcons>
       
       </Footer>
 
