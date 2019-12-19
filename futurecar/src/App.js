@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from "styled-components"
+import CarrosAPI from './components/grid';
 //import Filtro from './components/Filtro'
 //import Grid from './components/grid'
 
