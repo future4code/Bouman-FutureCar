@@ -1,11 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
-
+import styled from "styled-components"
+import Filtro from './components/Filtro'
 
 const MainContainer = styled.div `
 
 `;
-
 
 const Header = styled.div `
   display:flex;
@@ -47,6 +46,8 @@ const Test= styled.div`
 display:flex;
 `
 
+const Footer= styled.div `
+
 const ImgFooter= styled.img `
   display:flex;
   width: 40px;
@@ -62,6 +63,11 @@ const IconeFooter = styled.img `
 display:flex;
 width: 40px;
 height: 40px;
+
+`
+const IconeFooter = styled.div `
+`
+
 margin-right: 5px;
 `;
 
@@ -78,8 +84,6 @@ const Button = styled.button `
   background-color: #ff5c5c;
   margin-left: 50px;
 `;
-
-
 
 function App() {
   return (
