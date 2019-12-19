@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from "styled-components"
+import Filtro from './components/Filtro'
 
 const MainContainer = styled.div `
 
 `
-
 
 const Header = styled.div `
 display:flex;
@@ -29,9 +29,6 @@ height: 50px;
 background-color: rgb(255,92,92);
 
 `
-
-
-
 const Footer= styled.div `
 display:flex;
 background-color: rgb(255,92,92);
@@ -46,11 +43,6 @@ height: 40px;
 `
 const IconeFooter = styled.div `
 `
-
-
-
-
-
 
 function App() {
   return (
