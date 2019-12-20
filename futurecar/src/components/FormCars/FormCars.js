@@ -4,8 +4,8 @@ import axios from 'axios';
 
 
 const DivButton1 = styled.div `
-  margin-top: 200px;
-  margin-bottom: 100px;
+  margin-top: 20px;
+  margin-bottom: 70px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -13,17 +13,16 @@ const DivButton1 = styled.div `
 `;
 
 const Button = styled.button `
+  align-self:center;
   width: 150px;
   height: 50px;
   background-color: #ff5c5c;
-  margin-left: 50px;
 `;
 
 const Inputs = styled.input `
   width: 100%;
-  padding: 12px 20px;
+  padding: 12px 12px;
   margin: 8px 0;
-  display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
@@ -125,6 +124,7 @@ class FormCars extends React.Component {
         
             <DivButton1>
             <h2>Preencha o cadastro de veículo</h2>
+                
                 <div>
                 <p>Modelo: </p><Inputs type="text" placeholder="MODELO DO CARRO"
                 value={this.state.name} onChange={this.controleName}

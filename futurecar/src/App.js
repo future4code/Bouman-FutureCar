@@ -14,6 +14,8 @@ const Header = styled.div `
 `;
 
 const Section = styled.section `
+
+  text-align:center;
   background-color: #e6e6e6;
   height: 100%;
   padding-top: 70px;
@@ -57,23 +59,24 @@ display:flex;
 
 const IconeFooter = styled.img `
 display:flex;
-width: 40px;
+width: 40px; 
 height: 40px;
 margin-right: 5px;
 `;
 
-const DivButton = styled.div `
-  display: flex;
-  align-items: flex-start;
-  justify-items: center;
-  margin-top: 30px;
+const DivDisplay = styled.div `
+display:flex;
+justify-content: center;
+flex-direction: row;
+
+margin-top: 30px;
 `;
 
 const Button = styled.button `
+  margin-top: 50px;
   width: 150px;
   height: 50px;
   background-color: #ff5c5c;
-  margin-left: 50px;
 `;
 
 const DivTest = styled.div `
@@ -114,11 +117,11 @@ class App extends React.Component {
             <Titulo>
             <h2>FutureCAR VRUMM !</h2> 
             </Titulo>
-            <DivButton>
-              <Button onClick={this.handleStore}> Quero Vender</Button>
+            <Button onClick={this.handleStore}> Quero Vender</Button>
               <Button onClick={this.handleForm}> Quero Comprar</Button>
-              {this.state.currentPage === "store" ? <FormCars /> : <Store />}
-            </DivButton>
+            <DivDisplay>
+              {this.state.currentPage === "store" ? <FormCars /> : <Store/>}
+            </DivDisplay>
         </Section>
 
 
@@ -129,9 +132,9 @@ class App extends React.Component {
           <ImgFooter src={require('./components/img/carro-preto.png')}/> <h4>FUTURECAR | Going beyond.</h4>
         </Test>
           <FooterIcons>
-            <IconeFooter src={require('./components/img/instagram.png')} />
-            <IconeFooter  src={require('./components/img/facebook.png')} />
-            <IconeFooter src={require('./components/img/email.png')}  />
+           <a href="https://www.instagram.com/" target="blank" > <IconeFooter src={require('./components/img/instagram.png')} /> </a>
+           <a href="https://www.facebook.com/" target="blank" >   <IconeFooter  src={require('./components/img/facebook.png')} /> </a>
+           <a href="mailto:futurecar@hotmail.com" target="_blank" > <IconeFooter src={require('./components/img/email.png')}  /></a>
           </FooterIcons>
         
         </Footer>
