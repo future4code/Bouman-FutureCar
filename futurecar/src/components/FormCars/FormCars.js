@@ -4,9 +4,11 @@ import axios from 'axios';
 
 
 const DivButton1 = styled.div `
-  margin-top: 150px;
+  margin-top: 200px;
+  margin-bottom: 100px;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
 
 `;
 
@@ -36,36 +38,47 @@ class FormCars extends React.Component {
         this.state = {
             name: '',
             description: '',
-            prince: '' ,
+            price: '' ,
             paymentMethod:'' ,
             shipping:'' ,
             cor: '',
             ano: '',
             fornecedor: '',
-            km: '',
             foto: ''
         }
     }
 
     CreateCars =  async () =>{
 
-        console.log(data)
-        const data = {
+        
+        const cars = {
                 name: this.state.name,
                 description: this.state.description,
-                prince: this.state.prince,
+                price: this.state.price,
                 paymentMethod: this.state.paymentMethod,
                 shipping: this.state.cor,
                 cor: this.state.cor,
                 ano: this.state.ano,
                 fornecedor: this.state.fornecedor,
-                foto: this.state.foto,
-
+                foto: this.state.foto
         };
 
-        const response = axios.post(baseUrl, data)
-    
-        this.setState({cars: response.data})
+        try {
+            await axios.post(baseUrl, cars);	
+            this.setState({
+                name: '',
+                description: '',
+                price: '' ,
+                paymentMethod:'' ,
+                shipping:'' ,
+                cor: '',
+                ano: '',
+                fornecedor: '',
+                foto: ''
+            })           
+            }catch (error) {
+                alert(error.message)
+            }
         
         
     }
@@ -86,10 +99,6 @@ class FormCars extends React.Component {
         this.setState({fornecedor: event.target.value})
     }
 
-    controleKm = event =>{
-        this.setState({km: event.target.value})
-    }
-
     controleFoto = event =>{
         this.setState({foto: event.target.value})
     }
@@ -98,8 +107,8 @@ class FormCars extends React.Component {
         this.setState({description: event.target.value})
     }
 
-    controlePrince = event =>{
-        this.setState({prince: event.target.value})
+    controlePrice = event =>{
+        this.setState({price: event.target.value})
     }
 
     controlePaymentMethod = event =>{
@@ -115,22 +124,25 @@ class FormCars extends React.Component {
         return(
         
             <DivButton1>
-            <h2>Preencha o casdastro de veículo</h2>
-                <p>Modelo: </p><Inputs type="text" placeholder="MODELO"
+            <h2>Preencha o cadastro de veículo</h2>
+                <div>
+                <p>Modelo: </p><Inputs type="text" placeholder="MODELO DO CARRO"
                 value={this.state.name} onChange={this.controleName}
                 />
-                 <p>Descrição: </p><Inputs type="text" placeholder="MODELO"
+                 <p>Descrição: </p><Inputs type="text" placeholder="DESCRIÇÃO "
                 value={this.state.description} onChange={this.controleDescription}
                 />
-                <p>Preço: </p><Inputs type="number" placeholder="MODELO"
-                value={this.state.prince} onChange={this.controlePrince}
+                <p>Preço: </p><Inputs type="number" placeholder="VALOR DO CARRO"
+                value={this.state.price} onChange={this.controlePrice}
                 />
-                <p>Método de Pagamento: </p><Inputs type="text" placeholder="MODELO"
+                <p>Método de Pagamento: </p><Inputs type="text" placeholder="FORMA DE PAGAMENTO"
                 value={this.state.paymentMethod} onChange={this.controlePaymentMethod}
                 />
-                <p>Prazo de Entrega: </p><Inputs type="text" placeholder="MODELO"
+                <p>Prazo de Entrega: </p><Inputs type="number" placeholder="TEMPO DE ENTREGA"
                 value={this.state.shipping} onChange={this.controleShipping}
                 />
+                </div>
+                <div>
                 <p>Cor: </p><Inputs type="text" placeholder="COR"
                 value={this.state.cor} onChange={this.controleCor}
                 /> 
@@ -140,13 +152,11 @@ class FormCars extends React.Component {
                 <p>Marca: </p><Inputs type="text" placeholder="FORNECEDOR DO VEÍCULO"
                 value={this.state.fornecedor} onChange={this.controleFornecedor}
                 /> 
-                <p>KM: </p><Inputs type="number" placeholder="QUILOMETRANGEM"
-                value={this.state.km} onChange={this.controleKm}
-                /> 
                 <p>Foto: </p><Inputs type="text" placeholder="URL DA IMAGEM DO VEÍCULO"
                 value={this.state.foto} onChange={this.controleFoto}
                 /> 
-                <button onClick={this.CreateCars}>Enviar</button>
+                </div>
+                <Button onClick={this.CreateCars}>Enviar</Button>
             </DivButton1>
   
          
